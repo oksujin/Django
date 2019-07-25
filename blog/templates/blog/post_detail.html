@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %} 
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %} <!--로그인이 된 경우에만 이 링크를 보여준다 -->
+            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-default" ><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}

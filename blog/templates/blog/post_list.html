@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %} 
+
+{% block content %}
+    {% for post in post_list %}
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
+            </div>
+            <h1>
+                <!-- 나는 urls의 post_detail을 통해 url을 처리할거고 필요한 인자는 post.pk이다. -->
+                <a href="{% url "post_detail" post.pk %}">
+                    {{ post.title }}
+                </a>
+            </h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
